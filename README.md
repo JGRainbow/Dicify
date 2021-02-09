@@ -18,7 +18,6 @@ Upload an image to `images` and change the path in `main.py`. Set your desired r
 
 ## Example
 
-Marilyn Monroe
 ![Marilyn Monroe](https://github.com/JGRainbow/Dicify/blob/main/images/marilyn_output.jpg)
 
 ## Contributing
