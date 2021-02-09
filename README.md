@@ -16,13 +16,10 @@ pip3 install -e .
 
 Upload an image to `images` and change the path in `main.py`. Set your desired resolution, and run!
 
-## Examples
+## Example
 
 Marilyn Monroe
 ![Marilyn Monroe](https://github.com/JGRainbow/Dicify/blob/main/images/marilyn_output.jpg)
-
-Duke Ellington
-![Duke Ellington](hhttps://github.com/JGRainbow/Dicify/blob/main/images/duke_output.jpg)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
