@@ -1,5 +1,6 @@
 import numpy as np
 
+d_base = np.zeros((7, 7), dtype=int)
 
 d_one = np.array([
     [0, 0, 0, 0, 0, 0, 0],
@@ -60,3 +61,5 @@ d_six = np.array([
     [0, 1, 0, 0, 0, 1, 0],
     [0, 0, 0, 0, 0, 0, 0]
 ])
+
+dice_units = [d_base, d_one, d_two, d_three, d_four, d_five, d_six]

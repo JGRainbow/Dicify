@@ -11,14 +11,14 @@ with open('requirements.txt') as fp:
     install_requires = fp.read()
 
 setuptools.setup(
-    name="vehicle_reidentification",
+    name="dicify",
     version="0.0.0",
-    author="Valerann AI",
-    author_email="ai@valerann.com",
+    author="Jacob Rainbow",
+    author_email="jacob.rainbow@gmail.com",
     description="a short description",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://valerann.com/",
+    url="https://github.com/JGRainbow/Dicify",
     packages=setuptools.find_packages(),
     include_package_data=True,
     install_requires=install_requires,
