@@ -7,4 +7,3 @@ Pillow==8.1.0
 pyparsing==2.4.7
 python-dateutil==2.8.1
 six==1.15.0
--e git+git@github.com:JGRainbow/Dicify.git@caaaf3d5eb61020e9358a193ed67431f01f369c3#egg=vehicle_reidentification
