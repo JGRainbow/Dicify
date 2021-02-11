@@ -8,10 +8,11 @@ class Dicifier:
     
     _DICE_UNITS = dice_units
     
-    def __init__(self, img_path: str, output_height: int, output_width: int):
+    def __init__(self, img_path: str, output_height: int, output_width: int, invert: bool = False):
         self.img_path = img_path
         self.output_height = output_height
         self.output_width = output_width
+        self.invert = invert
 
     @property
     def img(self):
@@ -33,8 +34,9 @@ class Dicifier:
         # * convert each pixel to dice template (keep separate so we can substitute templates)
         img = self.img
         rescaled_img = self._rescale_img(img)
-        inverted_img = cv2.bitwise_not(rescaled_img)
-        senarised_img = self.senarise_array(inverted_img)
+        if not self.invert:
+            rescaled_img = cv2.bitwise_not(rescaled_img)
+        senarised_img = self.senarise_array(rescaled_img)
         dicified_img = self.convert_to_dice_array(senarised_img)
         return dicified_img
     
@@ -62,17 +64,22 @@ class Dicifier:
     
     def _update_output_array(self, output_array: np.ndarray, row: int, col: int, value: int):
         s = int(self.unit_size)
-        output_array[s * row: s * row + s, s * col: s * col + s] = self._DICE_UNITS[value]
+        if self.invert:
+            die_array = self._DICE_UNITS[value]
+        else:
+            die_array = 1 - self._DICE_UNITS[value]
+        output_array[s * row: s * row + s, s * col: s * col + s] = die_array
         return output_array
 
 
 if __name__ == '__main__':
     import matplotlib.pyplot as plt
     
-    img_path = './images/marilyn.jpg'
-    d = Dicifier(img_path, 65, 50)
+    INVERT = True
+    img_path = './images/duke.jpg'
+    d = Dicifier(img_path, 65, 50, invert=INVERT)
     dicified = d.dicify()
-    # plt.imshow(dicified, cmap='Greys')    
-    # plt.show()
-    cv2.imwrite('./images/marilyn_output.jpg', 255 - 255 * dicified)
+    plt.imshow(1 - dicified, cmap='binary')    
+    plt.show()
+    cv2.imwrite('./images/duke_output_invert.jpg', 255 * dicified)
     
